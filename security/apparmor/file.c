@@ -620,7 +620,7 @@ int aa_file_perm(int op, struct aa_label *label, struct file *file,
 
 	/* TODO: label cross check */
 
-	if (file->f_path.mnt && path_mediated_fs(file_inode(file))) {
+	if (file->f_path.mnt && path_mediated_fs(file->f_path.dentry)) {
 		error = __file_path_perm(op, label, flabel, file, request,
 					 denied);
 
